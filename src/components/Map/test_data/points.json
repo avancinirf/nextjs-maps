@@ -1,0 +1,52 @@
+{
+  "type": "FeatureCollection",
+  "name": "pontos",
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "title": "Ponto 01",
+        "info": "Ponto 01 do shapefile pontos.",
+        "icon": "solo.png",
+        "img": "photo_01.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-43.200456906554251, -22.595447151697968]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "title": "Ponto 02",
+        "info": "Ponto 02 do shapefile pontos.",
+        "icon": "solo.png",
+        "img": "photo_02.jpg,photo_02b.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-43.199436700773354, -22.594981939003269]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "title": "Ponto 03",
+        "info": "Ponto 03 do shapefile de pontos",
+        "icon": "solo.png",
+        "img": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-43.198999258353368, -22.596050963727009]
+      }
+    }
+  ]
+}

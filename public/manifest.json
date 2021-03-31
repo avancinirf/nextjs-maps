@@ -1,6 +1,6 @@
 {
-  "name": "React NextJS - Boilerplate",
-  "short_name": "Template NextJS",
+  "name": "NextJS Maps",
+  "short_name": "NextJS Maps",
   "icons": [
     {
       "src": "/img/icon-640.png",
@@ -14,8 +14,7 @@
     }
   ],
   "background_color": "#4285f4",
-  "description": "Boilerplate utilizando Typescript, React, NextJS e Styled Components!",
+  "description": "A simple project to create custom maps with NextJs and Leaflet.",
   "display": "fullscreen",
-  "start_url": "/",
-  "theme_color": "#4285f4"
+  "start_url": "/"
 }
