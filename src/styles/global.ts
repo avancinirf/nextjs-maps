@@ -7,7 +7,10 @@ const GlobalStyles = createGlobalStyle`
 		--red: #FF3E30;
 		--yellow: #F7B529;
 		--green: #179C52;
-		--greyLight: #eeeeee;
+		--greyLight: #EEEEEE;
+		--white: #EEEEEE;
+		--highlight: #CC0000;
+		--dark: #444444;
 
 		--container: 100rem;
 
@@ -26,7 +29,7 @@ const GlobalStyles = createGlobalStyle`
   }
   html, body, #__next {
     height: 100%;
-		background: var(--greyLight);
+		background: var(--dark);
 		color: var(--blue);
   }
   body {
