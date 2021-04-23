@@ -739,6 +739,480 @@ export type DocumentVersion = {
   data?: Maybe<Scalars['Json']>;
 };
 
+export type Geometry = Node & {
+  __typename?: 'Geometry';
+  /** System stage field */
+  stage: Stage;
+  /** Get the document in other stages */
+  documentInStages: Array<Geometry>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  name: Scalars['String'];
+  slug: Scalars['String'];
+  geotype: Scalars['String'];
+  geojson: Scalars['Json'];
+  /** List of Geometry versions */
+  history: Array<Version>;
+};
+
+
+export type GeometryDocumentInStagesArgs = {
+  stages?: Array<Stage>;
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+};
+
+
+export type GeometryCreatedByArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+
+export type GeometryUpdatedByArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+
+export type GeometryPublishedByArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+
+export type GeometryHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: Maybe<Stage>;
+};
+
+export type GeometryConnectInput = {
+  /** Document to connect */
+  where: GeometryWhereUniqueInput;
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: Maybe<ConnectPositionInput>;
+};
+
+/** A connection to a list of items. */
+export type GeometryConnection = {
+  __typename?: 'GeometryConnection';
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** A list of edges. */
+  edges: Array<GeometryEdge>;
+  aggregate: Aggregate;
+};
+
+export type GeometryCreateInput = {
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  name: Scalars['String'];
+  slug: Scalars['String'];
+  geotype: Scalars['String'];
+  geojson: Scalars['Json'];
+};
+
+export type GeometryCreateManyInlineInput = {
+  /** Create and connect multiple existing Geometry documents */
+  create?: Maybe<Array<GeometryCreateInput>>;
+  /** Connect multiple existing Geometry documents */
+  connect?: Maybe<Array<GeometryWhereUniqueInput>>;
+};
+
+export type GeometryCreateOneInlineInput = {
+  /** Create and connect one Geometry document */
+  create?: Maybe<GeometryCreateInput>;
+  /** Connect one existing Geometry document */
+  connect?: Maybe<GeometryWhereUniqueInput>;
+};
+
+/** An edge in a connection. */
+export type GeometryEdge = {
+  __typename?: 'GeometryEdge';
+  /** The item at the end of the edge. */
+  node: Geometry;
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+};
+
+/** Identifies documents */
+export type GeometryManyWhereInput = {
+  /** Contains search across all appropriate fields. */
+  _search?: Maybe<Scalars['String']>;
+  /** Logical AND on all given filters. */
+  AND?: Maybe<Array<GeometryWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: Maybe<Array<GeometryWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: Maybe<Array<GeometryWhereInput>>;
+  id?: Maybe<Scalars['ID']>;
+  /** All values that are not equal to given value. */
+  id_not?: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not contained in given list. */
+  id_not_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values containing the given string. */
+  id_contains?: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: Maybe<Scalars['ID']>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: Maybe<Scalars['ID']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: Maybe<Scalars['DateTime']>;
+  createdBy?: Maybe<UserWhereInput>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: Maybe<Scalars['DateTime']>;
+  updatedBy?: Maybe<UserWhereInput>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: Maybe<Scalars['DateTime']>;
+  publishedBy?: Maybe<UserWhereInput>;
+  name?: Maybe<Scalars['String']>;
+  /** All values that are not equal to given value. */
+  name_not?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not contained in given list. */
+  name_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values containing the given string. */
+  name_contains?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: Maybe<Scalars['String']>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+  /** All values that are not equal to given value. */
+  slug_not?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  slug_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values containing the given string. */
+  slug_contains?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  slug_not_contains?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  slug_starts_with?: Maybe<Scalars['String']>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  slug_ends_with?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: Maybe<Scalars['String']>;
+  geotype?: Maybe<Scalars['String']>;
+  /** All values that are not equal to given value. */
+  geotype_not?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  geotype_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not contained in given list. */
+  geotype_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values containing the given string. */
+  geotype_contains?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  geotype_not_contains?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  geotype_starts_with?: Maybe<Scalars['String']>;
+  /** All values not starting with the given string. */
+  geotype_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  geotype_ends_with?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  geotype_not_ends_with?: Maybe<Scalars['String']>;
+};
+
+export enum GeometryOrderByInput {
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  GeotypeAsc = 'geotype_ASC',
+  GeotypeDesc = 'geotype_DESC'
+}
+
+export type GeometryUpdateInput = {
+  name?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+  geotype?: Maybe<Scalars['String']>;
+  geojson?: Maybe<Scalars['Json']>;
+};
+
+export type GeometryUpdateManyInlineInput = {
+  /** Create and connect multiple Geometry documents */
+  create?: Maybe<Array<GeometryCreateInput>>;
+  /** Connect multiple existing Geometry documents */
+  connect?: Maybe<Array<GeometryConnectInput>>;
+  /** Override currently-connected documents with multiple existing Geometry documents */
+  set?: Maybe<Array<GeometryWhereUniqueInput>>;
+  /** Update multiple Geometry documents */
+  update?: Maybe<Array<GeometryUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Geometry documents */
+  upsert?: Maybe<Array<GeometryUpsertWithNestedWhereUniqueInput>>;
+  /** Disconnect multiple Geometry documents */
+  disconnect?: Maybe<Array<GeometryWhereUniqueInput>>;
+  /** Delete multiple Geometry documents */
+  delete?: Maybe<Array<GeometryWhereUniqueInput>>;
+};
+
+export type GeometryUpdateManyInput = {
+  geotype?: Maybe<Scalars['String']>;
+  geojson?: Maybe<Scalars['Json']>;
+};
+
+export type GeometryUpdateManyWithNestedWhereInput = {
+  /** Document search */
+  where: GeometryWhereInput;
+  /** Update many input */
+  data: GeometryUpdateManyInput;
+};
+
+export type GeometryUpdateOneInlineInput = {
+  /** Create and connect one Geometry document */
+  create?: Maybe<GeometryCreateInput>;
+  /** Update single Geometry document */
+  update?: Maybe<GeometryUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Geometry document */
+  upsert?: Maybe<GeometryUpsertWithNestedWhereUniqueInput>;
+  /** Connect existing Geometry document */
+  connect?: Maybe<GeometryWhereUniqueInput>;
+  /** Disconnect currently connected Geometry document */
+  disconnect?: Maybe<Scalars['Boolean']>;
+  /** Delete currently connected Geometry document */
+  delete?: Maybe<Scalars['Boolean']>;
+};
+
+export type GeometryUpdateWithNestedWhereUniqueInput = {
+  /** Unique document search */
+  where: GeometryWhereUniqueInput;
+  /** Document to update */
+  data: GeometryUpdateInput;
+};
+
+export type GeometryUpsertInput = {
+  /** Create document if it didn't exist */
+  create: GeometryCreateInput;
+  /** Update document if it exists */
+  update: GeometryUpdateInput;
+};
+
+export type GeometryUpsertWithNestedWhereUniqueInput = {
+  /** Unique document search */
+  where: GeometryWhereUniqueInput;
+  /** Upsert data */
+  data: GeometryUpsertInput;
+};
+
+/** Identifies documents */
+export type GeometryWhereInput = {
+  /** Contains search across all appropriate fields. */
+  _search?: Maybe<Scalars['String']>;
+  /** Logical AND on all given filters. */
+  AND?: Maybe<Array<GeometryWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: Maybe<Array<GeometryWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: Maybe<Array<GeometryWhereInput>>;
+  id?: Maybe<Scalars['ID']>;
+  /** All values that are not equal to given value. */
+  id_not?: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not contained in given list. */
+  id_not_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values containing the given string. */
+  id_contains?: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: Maybe<Scalars['ID']>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: Maybe<Scalars['ID']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: Maybe<Scalars['DateTime']>;
+  createdBy?: Maybe<UserWhereInput>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: Maybe<Scalars['DateTime']>;
+  updatedBy?: Maybe<UserWhereInput>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: Maybe<Scalars['DateTime']>;
+  publishedBy?: Maybe<UserWhereInput>;
+  name?: Maybe<Scalars['String']>;
+  /** All values that are not equal to given value. */
+  name_not?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not contained in given list. */
+  name_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values containing the given string. */
+  name_contains?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: Maybe<Scalars['String']>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+  /** All values that are not equal to given value. */
+  slug_not?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  slug_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values containing the given string. */
+  slug_contains?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  slug_not_contains?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  slug_starts_with?: Maybe<Scalars['String']>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  slug_ends_with?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: Maybe<Scalars['String']>;
+  geotype?: Maybe<Scalars['String']>;
+  /** All values that are not equal to given value. */
+  geotype_not?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  geotype_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not contained in given list. */
+  geotype_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values containing the given string. */
+  geotype_contains?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  geotype_not_contains?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  geotype_starts_with?: Maybe<Scalars['String']>;
+  /** All values not starting with the given string. */
+  geotype_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  geotype_ends_with?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  geotype_not_ends_with?: Maybe<Scalars['String']>;
+};
+
+/** References Geometry record uniquely */
+export type GeometryWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+};
+
 
 export enum ImageFit {
   /** Resizes the image to fit within the specified parameters without distorting, cropping, or changing the aspect ratio. */
@@ -839,6 +1313,46 @@ export type Mutation = {
    * @deprecated Please use the new paginated many mutation (unpublishManyAssetsConnection)
    */
   unpublishManyAssets: BatchPayload;
+  /** Create one geometry */
+  createGeometry?: Maybe<Geometry>;
+  /** Update one geometry */
+  updateGeometry?: Maybe<Geometry>;
+  /** Delete one geometry from _all_ existing stages. Returns deleted document. */
+  deleteGeometry?: Maybe<Geometry>;
+  /** Upsert one geometry */
+  upsertGeometry?: Maybe<Geometry>;
+  /** Publish one geometry */
+  publishGeometry?: Maybe<Geometry>;
+  /** Unpublish one geometry from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishGeometry?: Maybe<Geometry>;
+  /** Update many Geometry documents */
+  updateManyGeometriesConnection: GeometryConnection;
+  /** Delete many Geometry documents, return deleted documents */
+  deleteManyGeometriesConnection: GeometryConnection;
+  /** Publish many Geometry documents */
+  publishManyGeometriesConnection: GeometryConnection;
+  /** Find many Geometry documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyGeometriesConnection: GeometryConnection;
+  /**
+   * Update many geometries
+   * @deprecated Please use the new paginated many mutation (updateManyGeometriesConnection)
+   */
+  updateManyGeometries: BatchPayload;
+  /**
+   * Delete many Geometry documents
+   * @deprecated Please use the new paginated many mutation (deleteManyGeometriesConnection)
+   */
+  deleteManyGeometries: BatchPayload;
+  /**
+   * Publish many Geometry documents
+   * @deprecated Please use the new paginated many mutation (publishManyGeometriesConnection)
+   */
+  publishManyGeometries: BatchPayload;
+  /**
+   * Unpublish many Geometry documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyGeometriesConnection)
+   */
+  unpublishManyGeometries: BatchPayload;
   /** Create one page */
   createPage?: Maybe<Page>;
   /** Update one page */
@@ -996,6 +1510,108 @@ export type MutationUnpublishManyAssetsArgs = {
   from?: Array<Stage>;
   locales?: Maybe<Array<Locale>>;
   unpublishBase?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type MutationCreateGeometryArgs = {
+  data: GeometryCreateInput;
+};
+
+
+export type MutationUpdateGeometryArgs = {
+  where: GeometryWhereUniqueInput;
+  data: GeometryUpdateInput;
+};
+
+
+export type MutationDeleteGeometryArgs = {
+  where: GeometryWhereUniqueInput;
+};
+
+
+export type MutationUpsertGeometryArgs = {
+  where: GeometryWhereUniqueInput;
+  upsert: GeometryUpsertInput;
+};
+
+
+export type MutationPublishGeometryArgs = {
+  where: GeometryWhereUniqueInput;
+  to?: Array<Stage>;
+};
+
+
+export type MutationUnpublishGeometryArgs = {
+  where: GeometryWhereUniqueInput;
+  from?: Array<Stage>;
+};
+
+
+export type MutationUpdateManyGeometriesConnectionArgs = {
+  where?: Maybe<GeometryManyWhereInput>;
+  data: GeometryUpdateManyInput;
+  skip?: Maybe<Scalars['Int']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['ID']>;
+  after?: Maybe<Scalars['ID']>;
+};
+
+
+export type MutationDeleteManyGeometriesConnectionArgs = {
+  where?: Maybe<GeometryManyWhereInput>;
+  skip?: Maybe<Scalars['Int']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['ID']>;
+  after?: Maybe<Scalars['ID']>;
+};
+
+
+export type MutationPublishManyGeometriesConnectionArgs = {
+  where?: Maybe<GeometryManyWhereInput>;
+  from?: Maybe<Stage>;
+  to?: Array<Stage>;
+  skip?: Maybe<Scalars['Int']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['ID']>;
+  after?: Maybe<Scalars['ID']>;
+};
+
+
+export type MutationUnpublishManyGeometriesConnectionArgs = {
+  where?: Maybe<GeometryManyWhereInput>;
+  stage?: Maybe<Stage>;
+  from?: Array<Stage>;
+  skip?: Maybe<Scalars['Int']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['ID']>;
+  after?: Maybe<Scalars['ID']>;
+};
+
+
+export type MutationUpdateManyGeometriesArgs = {
+  where?: Maybe<GeometryManyWhereInput>;
+  data: GeometryUpdateManyInput;
+};
+
+
+export type MutationDeleteManyGeometriesArgs = {
+  where?: Maybe<GeometryManyWhereInput>;
+};
+
+
+export type MutationPublishManyGeometriesArgs = {
+  where?: Maybe<GeometryManyWhereInput>;
+  to?: Array<Stage>;
+};
+
+
+export type MutationUnpublishManyGeometriesArgs = {
+  where?: Maybe<GeometryManyWhereInput>;
+  from?: Array<Stage>;
 };
 
 
@@ -1572,6 +2188,14 @@ export type Query = {
   assetsConnection: AssetConnection;
   /** Retrieve document version */
   assetVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple geometries */
+  geometries: Array<Geometry>;
+  /** Retrieve a single geometry */
+  geometry?: Maybe<Geometry>;
+  /** Retrieve multiple geometries using the Relay connection interface */
+  geometriesConnection: GeometryConnection;
+  /** Retrieve document version */
+  geometryVersion?: Maybe<DocumentVersion>;
   /** Retrieve multiple pages */
   pages: Array<Page>;
   /** Retrieve a single page */
@@ -1630,6 +2254,44 @@ export type QueryAssetsConnectionArgs = {
 
 
 export type QueryAssetVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryGeometriesArgs = {
+  where?: Maybe<GeometryWhereInput>;
+  orderBy?: Maybe<GeometryOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  stage?: Stage;
+  locales?: Array<Locale>;
+};
+
+
+export type QueryGeometryArgs = {
+  where: GeometryWhereUniqueInput;
+  stage?: Stage;
+  locales?: Array<Locale>;
+};
+
+
+export type QueryGeometriesConnectionArgs = {
+  where?: Maybe<GeometryWhereInput>;
+  orderBy?: Maybe<GeometryOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  stage?: Stage;
+  locales?: Array<Locale>;
+};
+
+
+export type QueryGeometryVersionArgs = {
   where: VersionWhereInput;
 };
 
@@ -2202,5 +2864,16 @@ export type GetPageBySlugQuery = (
       { __typename?: 'RichText' }
       & Pick<RichText, 'html'>
     ) }
+  )> }
+);
+
+export type GetGeometriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetGeometriesQuery = (
+  { __typename?: 'Query' }
+  & { geometries: Array<(
+    { __typename?: 'Geometry' }
+    & Pick<Geometry, 'id' | 'slug' | 'name' | 'geotype' | 'geojson'>
   )> }
 );

@@ -1,33 +1,57 @@
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet'
-import { FeatureCollection } from 'geojson'
+import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet'
+import { Feature, GeoJsonObject } from 'geojson'
+import { Layer } from 'leaflet'
 
-export type MapProps = {
-  geoDataArray?: FeatureCollection[]
+type Geometry = {
+  id: string
+  name: string
+  slug: string
+  geotype: string
+  geojson: GeoJsonObject
 }
 
-const Map = ({ geoDataArray }: MapProps) => (
+export type MapProps = {
+  geometries?: Geometry[]
+}
+
+const onEachFeature = (feature: Feature, layer: Layer) => {
+  const title = feature.properties?.title || 'Untitled Feature'
+  // TODO - Passar todas as propriedades e gerar dinamicamente o popup
+  layer.on('mouseover', function () {
+    layer.bindPopup(title)
+  })
+}
+
+const Map = ({ geometries }: MapProps) => (
   <MapContainer
-    center={[0, 0]}
-    zoom={3}
+    center={[-22.595447151697968, -43.200456906554251]}
+    zoom={16}
     style={{ height: '100%', width: '100%' }}
   >
     <TileLayer
       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-    <Marker position={[0, 0]} title="Point 01">
+    {/* <Marker position={[0, 0]} title="Point 01">
       <Popup>
         A pretty CSS3 popup. <br /> Easily customizable.
       </Popup>
-    </Marker>
+    </Marker> */}
 
-    {geoDataArray?.map((geo) => {
+    {geometries?.map((geo: Geometry) => {
       return (
         <GeoJSON
-          key={`Layer-${Math.floor(Math.random() * 101)}`}
+          key={geo.slug}
           attribution="credits due..."
-          data={geo}
-        />
+          data={geo.geojson}
+          onEachFeature={onEachFeature}
+          /* eventHandlers={{
+            click: (e) => {
+              console.log(e.layer.feature.properties.title)
+              console.log(e)
+            }
+          }} */
+        ></GeoJSON>
       )
     })}
   </MapContainer>

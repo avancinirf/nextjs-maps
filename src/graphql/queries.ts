@@ -25,3 +25,15 @@ export const GET_PAGE_BY_SLUG = gql`
     }
   }
 `
+
+export const GET_GEOMETRIES = gql`
+  query getGeometries {
+    geometries {
+      id
+      slug
+      name
+      geotype
+      geojson
+    }
+  }
+`
