@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://nextjs-maps.vercel.app
+
+# Sitemaps
+Sitemap: https://nextjs-maps.vercel.app/sitemap.xml
