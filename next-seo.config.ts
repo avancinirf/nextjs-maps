@@ -2,7 +2,7 @@ export default {
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://my-maps.ricardoavancini.com.br',
+    url: 'https://nextjs-maps.vercel.app/',
     site_name: 'My Maps'
   }
 }

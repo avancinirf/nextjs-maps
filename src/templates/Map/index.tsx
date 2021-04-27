@@ -13,15 +13,15 @@ export default function MapTemplate({ geometries }: MapProps) {
       <NextSeo
         title="My Maps"
         description="A simple project to create custom maps with NextJs and Leaflet."
-        canonical="https://my-maps.ricardoavancini.com.br"
+        canonical="https://nextjs-maps.vercel.app/"
         openGraph={{
-          url: 'https://my-maps.ricardoavancini.com.br',
+          url: 'https://nextjs-maps.vercel.app/',
           title: 'My Maps',
           description:
             'A simple project to create custom maps with NextJs and Leaflet.',
           images: [
             {
-              url: 'https://my-maps.ricardoavancini.com.br/img/cover.png',
+              url: 'https://nextjs-maps.vercel.app/img/cover.png',
               width: 1280,
               height: 698,
               alt: 'My Maps'
