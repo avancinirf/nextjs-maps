@@ -30,7 +30,7 @@ const GlobalStyles = createGlobalStyle`
   html, body, #__next {
     height: 100%;
 		background: var(--dark);
-		color: var(--blue);
+		color: var(--white);
   }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif

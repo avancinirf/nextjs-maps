@@ -4,12 +4,18 @@ import { Layer } from 'leaflet'
 
 import * as S from './styles'
 
+type LayerStyle = {
+  color?: string
+  weight?: number
+}
+
 type Geometry = {
   id: string
   name: string
   slug: string
   geotype: string
   geojson: GeoJsonObject
+  style: LayerStyle
 }
 
 export type MapProps = {
@@ -18,10 +24,7 @@ export type MapProps = {
 
 const onEachFeature = (feature: Feature, layer: Layer) => {
   const title = feature.properties?.title || 'Untitled Feature'
-  // TODO - Passar todas as propriedades e gerar dinamicamente o popup
-  layer.on('mouseover', function () {
-    layer.bindPopup(title)
-  })
+  layer.bindPopup(title)
 }
 
 const Map = ({ geometries }: MapProps) => (
@@ -61,12 +64,13 @@ const Map = ({ geometries }: MapProps) => (
             attribution="credits due..."
             data={geo.geojson}
             onEachFeature={onEachFeature}
+            pathOptions={{ color: '#F7B529' }}
             /* eventHandlers={{
-            click: (e) => {
-              console.log(e.layer.feature.properties.title)
-              console.log(e)
-            }
-          }} */
+              click: (e) => {
+                console.log(e.layer.feature.properties.title)
+                console.log(e)
+              }
+            }} */
           ></GeoJSON>
         )
       })}
